@@ -48,15 +48,15 @@ function Home()
                             <ul className='px-0'>
                                 <li className='d-flex justify-content-between'>
                                     <p className='fs-3 mx-2'>English Breakfast</p>
-                                    <p className='fs-3 mx-2 text-success fw-nold'>£12</p>
+                                    <p className='fs-3 mx-2 text-success fw-nold'>Rs110</p>
                                 </li>
                                 <li className='d-flex justify-content-between'>
                                     <p className='fs-3 mx-2'>Mexican Pizza</p>
-                                    <p className='fs-3 mx-2 text-success fw-nold'>£15</p>
+                                    <p className='fs-3 mx-2 text-success fw-nold'>Rs160</p>
                                 </li>
                                 <li className='d-flex justify-content-between'>
-                                    <p className='fs-3 mx-2'>Saghetti</p>
-                                    <p className='fs-3 mx-2 text-success fw-nold'>£11</p>
+                                    <p className='fs-3 mx-2'>Spaghetti</p>
+                                    <p className='fs-3 mx-2 text-success fw-nold'>Rs95</p>
                                 </li>
                             </ul>
      </div>
@@ -65,15 +65,15 @@ function Home()
                             <ul className='px-0'>
                                 <li className='d-flex justify-content-between'>
                                     <p className='fs-3 mx-2'>Coffee</p>
-                                    <p className='fs-3 mx-2 text-success fw-nold'>£2</p>
+                                    <p className='fs-3 mx-2 text-success fw-nold'>Rs40</p>
                                 </li>
                                 <li className='d-flex justify-content-between'>
                                     <p className='fs-3 mx-2'>Juice</p>
-                                    <p className='fs-3 mx-2 text-success fw-nold'>£1</p>
+                                    <p className='fs-3 mx-2 text-success fw-nold'>Rs45</p>
                                 </li>
                                 <li className='d-flex justify-content-between'>
                                     <p className='fs-3 mx-2'>Spirits</p>
-                                    <p className='fs-3 mx-2 text-success fw-nold'>£5</p>
+                                    <p className='fs-3 mx-2 text-success fw-nold'>Rs45</p>
                                 </li>
                             </ul>
                         </div>

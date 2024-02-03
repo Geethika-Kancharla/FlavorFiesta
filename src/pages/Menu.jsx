@@ -10,61 +10,61 @@ const breakfast = [
     {
         id: 1,
         name: 'English Breakfast',
-        description: 'smoked bacon, sausage, tomato, mushrooms, black pudding, baked beans, eggs',
-        price: '£12'
+        description: 'sausage, tomato, mushrooms, black pudding, baked beans, eggs',
+        price: 'Rs 75'
     },
     {
         id: 2,
         name: 'Avocado Toast',
         description: 'poached egg, avocado, onion, tomatoes, bread',
-        price: '£8'
+        price: 'Rs60'
     },
     {
         id: 3,
         name: 'Burrito',
-        description: 'tortilla, egg, cheese, potatoes, pork meat',
-        price: '£11'
+        description: 'tortilla, egg, cheese, potatoes',
+        price: 'Rs80'
     }
 ];
 const lunch = [
     {
         id: 1,
-        name: 'Caesar Salad',
-        description: 'chicken breast, romaine lettuce, croutons, parmesan',
-        price: '£15'
+        name: 'Salad',
+        description: 'romaine lettuce, croutons, parmesan',
+        price: 'Rs90'
     },
     {
         id: 2,
-        name: 'Spaghetti Carbonara',
-        description: 'spaghetti, pancetta, garlic, eggs, parmesan, pepper',
-        price: '£14'
+        name: 'Spaghetti',
+        description: 'spaghetti,garlic, eggs, parmesan, pepper',
+        price: 'Rs110'
     },
     {
         id: 3,
         name: 'Pizza',
         description: 'chorizo, italian salami, tomatoes, mushrooms, olives',
-        price: '£12'
+        price: 'RS160'
     }
 ];
 
 const dinner = [
     {
         id: 1,
-        name: 'Spicy Beef',
-        description: 'spicy beef, potatoes, carrots, cheese sauce, spices',
-        price: '£17'
+        name: 'Smashed chickpea sandwich',
+        description: 'chickpea, potatoes, carrots, cheese sauce, spices',
+        price: 'Rs70'
     },
     {
         id: 2,
-        name: 'Spaghetti Bolognese',
+        name: 'Spaghetti',
         description: 'onion, carrot, celery, minced meat, spaghetti, parmesan',
-        price: '£15'
+        price: 'Rs50'
     },
     {
         id: 3,
-        name: 'Chickpea Curry',
-        description: 'onion, chickpea, garlic, mushrooms, tomatoes, spices',
-        price: '£12'
+        name: 'Burrito Bowl',
+        description: 'onion, chickpea, garlic, mushrooms, tomatoes, beans,grains',
+        price: 'Rs65'
     }
 ];
 
@@ -73,19 +73,19 @@ const dessert = [
         id: 1,
         name: 'Lemon Cake',
         description: 'flour, sugar, baking powder, lemon',
-        price: '£9'
+        price: 'Rs50'
     },
     {
         id: 2,
         name: 'Cinnamon Rolls',
         description: 'flour, salt, sugar, cinnamon, yeast, sour cream, milk',
-        price: '£11'
+        price: 'Rs100'
     },
     {
         id: 3,
         name: 'Vegan Pancakes',
         description: 'flour, sugar, baking powder, soya milk, blueberries',
-        price: '£8'
+        price: 'Rs85'
     }
 ];
 
