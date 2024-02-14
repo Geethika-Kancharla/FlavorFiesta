@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/FlavorFiesta/static/css/main.cc3f3a02.css",
+    "main.js": "/FlavorFiesta/static/js/main.a91ec664.js",
+    "static/js/787.f1bd99b5.chunk.js": "/FlavorFiesta/static/js/787.f1bd99b5.chunk.js",
+    "static/media/gallery4.jpg": "/FlavorFiesta/static/media/gallery4.bb2f9624ca0bd49eea72.jpg",
+    "static/media/contact-img.jpg": "/FlavorFiesta/static/media/contact-img.d683a0bb9ff6c65c295a.jpg",
+    "static/media/gallery1.jpg": "/FlavorFiesta/static/media/gallery1.8c4a2f3740089891afe1.jpg",
+    "static/media/about-img.jpg": "/FlavorFiesta/static/media/about-img.6d1d7306b05a41b97036.jpg",
+    "static/media/dessert.jpg": "/FlavorFiesta/static/media/dessert.d8b55a4739399e30b6c9.jpg",
+    "static/media/gallery5.jpg": "/FlavorFiesta/static/media/gallery5.9c3e6699bb860bb5c4ec.jpg",
+    "static/media/lunch.jpg": "/FlavorFiesta/static/media/lunch.b823e90ee2b8364c6191.jpg",
+    "static/media/gallery2.jpg": "/FlavorFiesta/static/media/gallery2.f6db25327629a496a08f.jpg",
+    "static/media/dinner.jpg": "/FlavorFiesta/static/media/dinner.15e20c686658b83d2f47.jpg",
+    "static/media/menu-img.jpg": "/FlavorFiesta/static/media/menu-img.3aaacc0dcb9f62d15929.jpg",
+    "static/media/about-page-img.jpg": "/FlavorFiesta/static/media/about-page-img.6b438d71a8290df479ab.jpg",
+    "static/media/about-chef1.jpg": "/FlavorFiesta/static/media/about-chef1.0eef3922fb357d211f30.jpg",
+    "static/media/contact-page-img.jpg": "/FlavorFiesta/static/media/contact-page-img.b1154d82ac00c9d492f2.jpg",
+    "static/media/breakfast.jpg": "/FlavorFiesta/static/media/breakfast.9b746bb111d398b164f1.jpg",
+    "static/media/about-chef2.jpg": "/FlavorFiesta/static/media/about-chef2.877d57410134c090c810.jpg",
+    "static/media/gallery3.jpg": "/FlavorFiesta/static/media/gallery3.dfe8e13217cca62b7837.jpg",
+    "static/media/gallery6.jpg": "/FlavorFiesta/static/media/gallery6.e36d9c313e0d5cfd7c2c.jpg",
+    "static/media/header-img.jpg": "/FlavorFiesta/static/media/header-img.6a732e66712c3e58396f.jpg",
+    "static/media/person4.jpg": "/FlavorFiesta/static/media/person4.5295c560e90cec83d510.jpg",
+    "static/media/person3.jpg": "/FlavorFiesta/static/media/person3.a73e26327b1ff2e6377d.jpg",
+    "static/media/person2.jpg": "/FlavorFiesta/static/media/person2.66e8821b97f32eef97e1.jpg",
+    "static/media/person1.jpg": "/FlavorFiesta/static/media/person1.6942269ed3048e4aa12e.jpg",
+    "index.html": "/FlavorFiesta/index.html",
+    "main.cc3f3a02.css.map": "/FlavorFiesta/static/css/main.cc3f3a02.css.map",
+    "main.a91ec664.js.map": "/FlavorFiesta/static/js/main.a91ec664.js.map",
+    "787.f1bd99b5.chunk.js.map": "/FlavorFiesta/static/js/787.f1bd99b5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cc3f3a02.css",
+    "static/js/main.a91ec664.js"
+  ]
+}
