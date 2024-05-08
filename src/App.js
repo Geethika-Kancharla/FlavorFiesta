@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import Menu from './pages/Menu';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Register from './pages/Register';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
               <Nav.Link href='/menu' className='text-uppercase'>Menu</Nav.Link>
               <Nav.Link href='/about' className='text-uppercase'>About</Nav.Link>
               <Nav.Link href='/contact' className='text-uppercase'>Contact</Nav.Link>
+              <Nav.Link href='/register' className='text-uppercase'>Register</Nav.Link>
+              <Nav.Link href='/login' className='text-uppercase'>Login</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -35,6 +39,9 @@ function App() {
         <Route path='/menu' element={<Menu />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+
       </Routes>
 
       <footer className='bg-body-tertiary'>

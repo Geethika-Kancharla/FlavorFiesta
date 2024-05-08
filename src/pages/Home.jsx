@@ -7,9 +7,9 @@ import { ImageGallery } from '../components/ImageGallery';
 import { ContactInfo } from '../components/ContactInfo';
 import ContactImage from '../utils/img/contact-img.jpg';
 
-function Home()
-{
-    return(
+
+function Home() {
+    return (
         <div className='home-page'>
             <header className='h-100 min-vh-100 d-flex align-items-center'>
                 <div className='container'>
@@ -22,7 +22,7 @@ function Home()
                     </div>
                 </div>
             </header>
-            
+
             <div className='container my-5'>
                 <div className='row'>
                     <div className='col-lg-6 d-flex justify-content-center d-none d-lg-flex'>
@@ -38,12 +38,12 @@ function Home()
                     </div>
                 </div>
             </div>
-     
-     <div className="menu-section py-5 text-light shadow">
-        <div className="container d flex flex-column align-items-center">
-            <h2 className='fs-1 mb-5 text-uppercase fw-bold'>Our Favourites</h2>
-            <div className='row mb-5 w-100'>
-            <div className='col-lg-6 d-flex flex-column align-items-center mb-5 mb-lg-0'>
+
+            <div className="menu-section py-5 text-light shadow">
+                <div className="container d flex flex-column align-items-center">
+                    <h2 className='fs-1 mb-5 text-uppercase fw-bold'>Our Favourites</h2>
+                    <div className='row mb-5 w-100'>
+                        <div className='col-lg-6 d-flex flex-column align-items-center mb-5 mb-lg-0'>
                             <h3 className='fs-2 mb-5'>Food</h3>
                             <ul className='px-0'>
                                 <li className='d-flex justify-content-between'>
@@ -59,8 +59,8 @@ function Home()
                                     <p className='fs-3 mx-2 text-success fw-nold'>Rs95</p>
                                 </li>
                             </ul>
-     </div>
-     <div className='col-lg-6 d-flex flex-column align-items-center mb-5 mb-lg-0'>
+                        </div>
+                        <div className='col-lg-6 d-flex flex-column align-items-center mb-5 mb-lg-0'>
                             <h3 className='fs-2 mb-5'>Drinks</h3>
                             <ul className='px-0'>
                                 <li className='d-flex justify-content-between'>
@@ -78,25 +78,25 @@ function Home()
                             </ul>
                         </div>
                     </div>
-                    <MenuBtn/>
-                    </div>
-                    </div>
-                    <ImageGallery />
-
-<div className='bg-dark text-light py-5 shadow'>
-    <div className='container'>
-        <div className='row'>
-            <div className='col-lg-6 d-flex flex-column align-items-center justify-content-center mb-5 mb-lg-0'>
-                <ContactInfo />
+                    <MenuBtn />
+                </div>
             </div>
-            <div className='col-lg-6 d-flex justify-content-center'>
-                <img src={ContactImage} className='img-fluid w-50' alt="" />
+            <ImageGallery />
+
+            <div className='bg-dark text-light py-5 shadow'>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-lg-6 d-flex flex-column align-items-center justify-content-center mb-5 mb-lg-0'>
+                            <ContactInfo />
+                        </div>
+                        <div className='col-lg-6 d-flex justify-content-center'>
+                            <img src={ContactImage} className='img-fluid w-50' alt="" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-</div>
-        
+
     )
 }
 export default Home;
