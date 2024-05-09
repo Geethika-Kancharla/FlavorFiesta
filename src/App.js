@@ -1,5 +1,5 @@
 import './App.css';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route, Navigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -11,6 +11,13 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 
 function App() {
+
+  const currentUser = false;
+
+  const RequireAuth = ({ children }) => {
+    return currentUser ? children : <Navigate to="/login" />;
+  }
+
   return (
     <div>
       <Navbar expand="lg" className='fixed-top bg-body-tertiary shadow'>
@@ -35,13 +42,37 @@ function App() {
       </Navbar>
 
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/menu' element={<Menu />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-
+        <Route
+          index
+          element=
+          {<RequireAuth><Home /></RequireAuth>
+          }
+        />
+        <Route path='/menu'
+          element=
+          {<RequireAuth><Menu /></RequireAuth>
+          }
+        />
+        <Route path='/about'
+          element=
+          {<RequireAuth><About /></RequireAuth>
+          }
+        />
+        <Route path='/contact'
+          element=
+          {<RequireAuth><Contact /></RequireAuth>
+          }
+        />
+        <Route path='/register'
+          element=
+          {<RequireAuth><Register /></RequireAuth>
+          }
+        />
+        <Route path='/login'
+          element=
+          {<Login />
+          }
+        />
       </Routes>
 
       <footer className='bg-body-tertiary'>
