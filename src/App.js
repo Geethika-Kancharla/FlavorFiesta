@@ -9,10 +9,13 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import { useContext } from 'react';
+import { AuthContext } from './context/AuthContext';
 
 function App() {
 
-  const currentUser = false;
+  const {currentUser}=useContext(AuthContext);
+
 
   const RequireAuth = ({ children }) => {
     return currentUser ? children : <Navigate to="/login" />;
