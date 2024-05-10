@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Contact.css';
 import { ContactInfo } from '../components/ContactInfo';
 import { Form } from 'react-bootstrap';
 import { Reviews } from '../components/Reviews';
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from '../Firebase';
 
 function Contact() {
+
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
+    const [email, setEmail] = useState();
+    const [phoneNo, setPhoneNo] = useState();
+    const [date, setDate] = useState();
+    const [no, setNo] = useState();
+    const [comments, setComments] = useState();
+
+    const handleAdd = async (e) => {
+        e.preventDefault();
+        try {
+            const docRef = await addDoc(collection(db, "users"), {
+                FirstName: { firstName },
+                LastName: { lastName },
+                email: { email },
+                PhoneNumber: { phoneNo },
+                Date: { date },
+                Guests: { no },
+                Comments: { comments },
+                timestamp: serverTimestamp(),
+            });
+            console.log("Document written with ID: ", docRef.id);
+            
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    }
+
     return (
         <div className='contact-page'>
             <header className='mt-5'>
@@ -19,40 +50,40 @@ function Contact() {
                         <ContactInfo />
                     </div>
                     <div className='col-lg-6 d-flex justify-content-center'>
-                        <Form>
+                        <Form onSubmit={handleAdd}>
                             <Form.Group className='row mb-3'>
                                 <div className='col-md-6'>
                                     <Form.Label htmlFor='first-name'>First Name</Form.Label>
-                                    <Form.Control type='text' id='first-name' />
+                                    <Form.Control type='text' id='first-name' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                                 </div>
                                 <div className='col-md-6'>
                                     <Form.Label htmlFor='last-name'>Last Name</Form.Label>
-                                    <Form.Control type='text' id='last-name' />
+                                    <Form.Control type='text' id='last-name' value={lastName} onChange={(e) => setLastName(e.target.value)} />
                                 </div>
                             </Form.Group>
                             <Form.Group className='row mb-3'>
                                 <div className='col-md-6'>
                                     <Form.Label htmlFor='email-address'>Email Address</Form.Label>
-                                    <Form.Control type='email' id='email-address' />
+                                    <Form.Control type='email' id='email-address' value={email} onChange={(e) => setEmail(e.target.value)} />
                                 </div>
                                 <div className='col-md-6'>
                                     <Form.Label htmlFor='phone-number'>Phone Number</Form.Label>
-                                    <Form.Control type='tel' id='phone-number' />
+                                    <Form.Control type='tel' id='phone-number' value={phoneNo} onChange={(e) => setPhoneNo(e.target.value)} />
                                 </div>
                             </Form.Group>
                             <Form.Group className='row mb-3'>
                                 <div className='col-md-6'>
                                     <Form.Label htmlFor='date'>Date</Form.Label>
-                                    <Form.Control type='date' id='date' />
+                                    <Form.Control type='date' id='date' value={date} onChange={(e) => setDate(e.target.value)} />
                                 </div>
                                 <div className='col-md-6'>
                                     <Form.Label htmlFor='guests-number'>Number Of Guests</Form.Label>
-                                    <Form.Control type='number' id='guests-number' />
+                                    <Form.Control type='number' id='guests-number' value={no} onChange={(e) => setNo(e.target.value)} />
                                 </div>
                             </Form.Group>
                             <Form.Group className='mb-4'>
                                 <Form.Label htmlFor='comments'>Comments</Form.Label>
-                                <Form.Control type='textarea' id='comments' />
+                                <Form.Control type='textarea' id='comments' value={comments} onChange={(e) => setComments(e.target.value)} />
                             </Form.Group>
 
                             <button type='submit' className='btn btn-success btn-lg'>Submit</button>

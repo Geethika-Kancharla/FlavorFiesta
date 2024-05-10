@@ -15,7 +15,7 @@ const Login = () => {
   const {dispatch}=useContext(AuthContext);
 
   const handleLogin = (e) => {
-    // e.preventDefault();
+     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;

@@ -14,8 +14,7 @@ import { AuthContext } from './context/AuthContext';
 
 function App() {
 
-  const {currentUser}=useContext(AuthContext);
-
+  const { currentUser } = useContext(AuthContext);
 
   const RequireAuth = ({ children }) => {
     return currentUser ? children : <Navigate to="/login" />;
@@ -48,17 +47,17 @@ function App() {
         <Route
           index
           element=
-          {<RequireAuth><Home /></RequireAuth>
+          {<Home />
           }
         />
         <Route path='/menu'
           element=
-          {<RequireAuth><Menu /></RequireAuth>
+          {<Menu />
           }
         />
         <Route path='/about'
           element=
-          {<RequireAuth><About /></RequireAuth>
+          {<About />
           }
         />
         <Route path='/contact'
@@ -68,7 +67,7 @@ function App() {
         />
         <Route path='/register'
           element=
-          {<RequireAuth><Register /></RequireAuth>
+          {<Register />
           }
         />
         <Route path='/login'
