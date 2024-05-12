@@ -1,32 +1,36 @@
-import React, { useState,useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Form } from 'react-bootstrap'
-import { auth } from '../Firebase'
-import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../context/AuthContext'
+import { useFirebase } from '../context/Firebase'
 
 const Login = () => {
+
+  const firebase = useFirebase();
+  const navigate=useNavigate();
+
   const [error, setError] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
+  useEffect(()=>{
+    if(firebase.isLoggedIn){
+      navigate("/");
+    }
+  },[firebase,navigate])
   
-  const {dispatch}=useContext(AuthContext);
+  //console.log(firebase)
 
-  const handleLogin = (e) => {
-     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        // console.log(user);
-        dispatch({type:"LOGIN",payload:user})
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(true);
-      });
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      console.log("Log in an user")
+      await firebase.signinUserWithEmailAndPassword(email, password);
+      console.log("Log in successfull");
+    }
+    catch (error) {
+      setError(error);
+      console.log(error);
+    }
   }
 
   return (
@@ -41,7 +45,7 @@ const Login = () => {
       </Form.Group>
       <Button onClick={handleLogin}>Login</Button>
       {
-        error && <span className='mt-3 text-danger'>Wrong email or password!</span>
+        error && <span className='mt-3 text-danger'>Wrong Email and password</span>
       }
     </Form>
   );

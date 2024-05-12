@@ -1,5 +1,5 @@
 import './App.css';
-import { Link, Routes, Route, Navigate } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -9,16 +9,18 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import { useContext } from 'react';
-import { AuthContext } from './context/AuthContext';
+import { useFirebase } from './context/Firebase';
 
 function App() {
 
-  const { currentUser } = useContext(AuthContext);
+  const firebase = useFirebase();
 
-  const RequireAuth = ({ children }) => {
-    return currentUser ? children : <Navigate to="/login" />;
+  console.log(firebase);
+
+  const handleLogout = () => {
+    firebase.handleLogout();
   }
+  console.log(firebase);
 
   return (
     <div>
@@ -38,43 +40,19 @@ function App() {
               <Nav.Link href='/contact' className='text-uppercase'>Contact</Nav.Link>
               <Nav.Link href='/register' className='text-uppercase'>Register</Nav.Link>
               <Nav.Link href='/login' className='text-uppercase'>Login</Nav.Link>
+              <Nav.Link href='/' className='text-uppercase' onClick={handleLogout}>Logout</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
       <Routes>
-        <Route
-          index
-          element=
-          {<Home />
-          }
-        />
-        <Route path='/menu'
-          element=
-          {<Menu />
-          }
-        />
-        <Route path='/about'
-          element=
-          {<About />
-          }
-        />
-        <Route path='/contact'
-          element=
-          {<RequireAuth><Contact /></RequireAuth>
-          }
-        />
-        <Route path='/register'
-          element=
-          {<Register />
-          }
-        />
-        <Route path='/login'
-          element=
-          {<Login />
-          }
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
 
       <footer className='bg-body-tertiary'>

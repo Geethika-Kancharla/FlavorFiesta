@@ -3,8 +3,6 @@ import './Contact.css';
 import { ContactInfo } from '../components/ContactInfo';
 import { Form } from 'react-bootstrap';
 import { Reviews } from '../components/Reviews';
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from '../Firebase';
 
 function Contact() {
 
@@ -15,26 +13,6 @@ function Contact() {
     const [date, setDate] = useState();
     const [no, setNo] = useState();
     const [comments, setComments] = useState();
-
-    const handleAdd = async (e) => {
-        e.preventDefault();
-        try {
-            const docRef = await addDoc(collection(db, "users"), {
-                FirstName: { firstName },
-                LastName: { lastName },
-                email: { email },
-                PhoneNumber: { phoneNo },
-                Date: { date },
-                Guests: { no },
-                Comments: { comments },
-                timestamp: serverTimestamp(),
-            });
-            console.log("Document written with ID: ", docRef.id);
-            
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
-    }
 
     return (
         <div className='contact-page'>
@@ -50,7 +28,7 @@ function Contact() {
                         <ContactInfo />
                     </div>
                     <div className='col-lg-6 d-flex justify-content-center'>
-                        <Form onSubmit={handleAdd}>
+                        <Form>
                             <Form.Group className='row mb-3'>
                                 <div className='col-md-6'>
                                     <Form.Label htmlFor='first-name'>First Name</Form.Label>
