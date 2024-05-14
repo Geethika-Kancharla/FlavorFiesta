@@ -111,8 +111,15 @@ export const FirebaseProvider = (props) => {
 
     const isLoggedIn = user ? true : false;
 
-    const getImageURL = (path) => {
-        return getDownloadURL(ref(storage, path));
+    const getImageURL = async (path) => {
+        try {
+            const fileRef = ref(storage, path); // Create a reference to the file
+            const url = await getDownloadURL(fileRef); // Get the download URL
+            return url;
+        } catch (error) {
+            console.error("Error getting download URL:", error);
+            return null; // Handle the error as needed
+        }
     }
 
     return (
@@ -124,7 +131,8 @@ export const FirebaseProvider = (props) => {
             handleAddUserData,
             user,
             fetchData,
-            data
+            data,
+            getImageURL
         }}>
             {props.children}
         </FirebaseContext.Provider>
