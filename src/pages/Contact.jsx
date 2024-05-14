@@ -3,8 +3,11 @@ import './Contact.css';
 import { ContactInfo } from '../components/ContactInfo';
 import { Form } from 'react-bootstrap';
 import { Reviews } from '../components/Reviews';
+import { useFirebase } from '../context/Firebase';
 
 function Contact() {
+
+    const firebase = useFirebase();
 
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
@@ -13,6 +16,25 @@ function Contact() {
     const [date, setDate] = useState();
     const [no, setNo] = useState();
     const [comments, setComments] = useState();
+    const [profile, setProfile] = useState(undefined);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await firebase.handleAddUserData(firstName, lastName, email, phoneNo, date, no, comments, profile);
+        alert("Successfully booked");
+        setFirstName('');
+        setLastName('');
+        setEmail();
+        setPhoneNo('');
+        setDate('');
+        setNo('');
+        setComments('');
+        setProfile(undefined);
+    }
+
+    const handleFileChange = (e) => {
+        setProfile(e.target.files[0]);
+    };
 
     return (
         <div className='contact-page'>
@@ -28,7 +50,7 @@ function Contact() {
                         <ContactInfo />
                     </div>
                     <div className='col-lg-6 d-flex justify-content-center'>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Form.Group className='row mb-3'>
                                 <div className='col-md-6'>
                                     <Form.Label htmlFor='first-name'>First Name</Form.Label>
@@ -42,7 +64,7 @@ function Contact() {
                             <Form.Group className='row mb-3'>
                                 <div className='col-md-6'>
                                     <Form.Label htmlFor='email-address'>Email Address</Form.Label>
-                                    <Form.Control type='email' id='email-address' value={email} onChange={(e) => setEmail(e.target.value)} />
+                                    <Form.Control type='email' id='email-address' value={firebase.user.email} onChange={(e) => setEmail(e.target.value)} readOnly />
                                 </div>
                                 <div className='col-md-6'>
                                     <Form.Label htmlFor='phone-number'>Phone Number</Form.Label>
@@ -62,6 +84,10 @@ function Contact() {
                             <Form.Group className='mb-4'>
                                 <Form.Label htmlFor='comments'>Comments</Form.Label>
                                 <Form.Control type='textarea' id='comments' value={comments} onChange={(e) => setComments(e.target.value)} />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formGroupImage">
+                                <Form.Label>Profile(Optional)</Form.Label>
+                                <Form.Control type="file" placeholder="Upload Profile" onChange={handleFileChange} />
                             </Form.Group>
 
                             <button type='submit' className='btn btn-success btn-lg'>Submit</button>

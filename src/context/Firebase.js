@@ -1,6 +1,6 @@
 import React, { useContext, createContext, useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore'
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -8,6 +8,7 @@ import {
     onAuthStateChanged,
     signOut
 } from 'firebase/auth'
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -21,10 +22,9 @@ const firebaseConfig = {
 const FirebaseContext = createContext(null);
 
 const firebaseApp = initializeApp(firebaseConfig);
-const db = getFirestore(firebaseApp);
 const firebaseAuth = getAuth(firebaseApp);
-
-//export const useFirebase = () => { useContext(FirebaseContext) }
+const firestore = getFirestore(firebaseApp);
+const storage = getStorage(firebaseApp);
 
 export const useFirebase = () => {
     const firebase = useContext(FirebaseContext);
@@ -37,6 +37,7 @@ export const useFirebase = () => {
 export const FirebaseProvider = (props) => {
 
     const [user, setUser] = useState(null);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         onAuthStateChanged(firebaseAuth, (user) => {
@@ -45,14 +46,15 @@ export const FirebaseProvider = (props) => {
             }
             else {
                 setUser(null);
-
             }
         })
     }, [])
 
+
     const signupUserWithEmailAndPassword = (email, password) => {
         createUserWithEmailAndPassword(firebaseAuth, email, password);
     }
+
     const signinUserWithEmailAndPassword = (email, password) => {
         signInWithEmailAndPassword(firebaseAuth, email, password);
     }
@@ -65,14 +67,64 @@ export const FirebaseProvider = (props) => {
         }
     };
 
+    console.log(user);
+
+    const handleAddUserData = async (
+        firstName,
+        lastName,
+        email,
+        phoneNo,
+        date,
+        no,
+        comments,
+        profile
+    ) => {
+        const imageRef = ref(storage, `uploads/images/${Date.now()}-${profile.name}`);
+        const uploadResult = await uploadBytes(imageRef, profile);
+        return await addDoc(collection(firestore, 'users'), {
+            firstName,
+            lastName,
+            phoneNo,
+            date,
+            no,
+            comments,
+            imageURL: uploadResult.ref.fullPath,
+            userID: user.uid,
+            userEmail: user.email
+        })
+    };
+
+    const fetchData = async () => {
+        let list = []
+        try {
+            const querySnapshot = await getDocs(collection(firestore, "users"));
+            querySnapshot.forEach((doc) => {
+                list.push({ id: doc.id, ...doc.data() });
+            });
+            setData(list);
+            console.log(list);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
     const isLoggedIn = user ? true : false;
+
+    const getImageURL = (path) => {
+        return getDownloadURL(ref(storage, path));
+    }
 
     return (
         <FirebaseContext.Provider value={{
             signupUserWithEmailAndPassword,
             signinUserWithEmailAndPassword,
             isLoggedIn,
-            handleLogout
+            handleLogout,
+            handleAddUserData,
+            user,
+            fetchData,
+            data
         }}>
             {props.children}
         </FirebaseContext.Provider>
