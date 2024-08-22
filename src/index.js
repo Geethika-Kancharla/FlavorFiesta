@@ -14,7 +14,7 @@ root.render(
   <BrowserRouter>
     <FirebaseProvider>
       <App />
-      </FirebaseProvider>
+    </FirebaseProvider>
   </BrowserRouter>
 );
 

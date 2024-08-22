@@ -16,11 +16,11 @@ function Contact() {
     const [date, setDate] = useState();
     const [no, setNo] = useState();
     const [comments, setComments] = useState();
-    const [profile, setProfile] = useState(undefined);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await firebase.handleAddUserData(firstName, lastName, email, phoneNo, date, no, comments, profile);
+        await firebase.handleAddUserData(firstName, lastName, email, phoneNo, date, no, comments);
         alert("Successfully booked");
         setFirstName('');
         setLastName('');
@@ -29,12 +29,8 @@ function Contact() {
         setDate('');
         setNo('');
         setComments('');
-        setProfile(undefined);
-    }
 
-    const handleFileChange = (e) => {
-        setProfile(e.target.files[0]);
-    };
+    }
 
     return (
         <div className='contact-page'>
@@ -85,10 +81,7 @@ function Contact() {
                                 <Form.Label htmlFor='comments'>Comments</Form.Label>
                                 <Form.Control type='textarea' id='comments' value={comments} onChange={(e) => setComments(e.target.value)} />
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="formGroupImage">
-                                <Form.Label>Profile(Optional)</Form.Label>
-                                <Form.Control type="file" placeholder="Upload Profile" onChange={handleFileChange} />
-                            </Form.Group>
+
 
                             <button type='submit' className='btn btn-success btn-lg'>Submit</button>
                         </Form>

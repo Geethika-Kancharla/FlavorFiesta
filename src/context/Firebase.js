@@ -61,7 +61,7 @@ export const FirebaseProvider = (props) => {
 
     const handleLogout = async () => {
         try {
-            await signOut(firebaseAuth); // Sign out the user using Firebase's signOut method
+            await signOut(firebaseAuth);
         } catch (error) {
             console.error('Error occurred during logout:', error);
         }
@@ -77,10 +77,9 @@ export const FirebaseProvider = (props) => {
         date,
         no,
         comments,
-        profile
+
     ) => {
-        const imageRef = ref(storage, `uploads/images/${Date.now()}-${profile.name}`);
-        const uploadResult = await uploadBytes(imageRef, profile);
+
         return await addDoc(collection(firestore, 'users'), {
             firstName,
             lastName,
@@ -88,11 +87,12 @@ export const FirebaseProvider = (props) => {
             date,
             no,
             comments,
-            imageURL: uploadResult.ref.fullPath,
+
             userID: user.uid,
             userEmail: user.email
         })
     };
+
 
     const fetchData = async () => {
         let list = []

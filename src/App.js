@@ -19,7 +19,7 @@ function App() {
   const handleLogout = () => {
     firebase.handleLogout();
   }
-  
+
   return (
     <div>
       <Navbar expand="lg" className='fixed-top bg-body-tertiary shadow'>
@@ -36,10 +36,12 @@ function App() {
               <Nav.Link href='/menu' className='active text-uppercase'>Menu</Nav.Link>
               <Nav.Link href='/about' className='active text-uppercase'>About</Nav.Link>
               <Nav.Link href='/contact' className='active text-uppercase'>Contact</Nav.Link>
-              <Nav.Link href='/register' className='active text-uppercase'>Register</Nav.Link>
-              <Nav.Link href='/login' className='active text-uppercase'>Login</Nav.Link>
-              <Nav.Link href='/admin' className='active text-uppercase'>Admin</Nav.Link>
-              <Nav.Link href='/' className='active text-uppercase' onClick={handleLogout}>Logout</Nav.Link>
+              {/* <Nav.Link href='/register' className='active text-uppercase'>Register</Nav.Link>
+              <Nav.Link href='/login' className='active text-uppercase'>Login</Nav.Link> */}
+              {/* <Nav.Link href='/admin' className='active text-uppercase'>Admin</Nav.Link> */}
+              {firebase.isLoggedIn &&
+                <Nav.Link href='/' className='active text-uppercase' onClick={handleLogout}>Logout</Nav.Link>
+              }
             </Nav>
           </Navbar.Collapse>
         </Container>
